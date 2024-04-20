@@ -1,7 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+builder.Services.AddDbContext<DulceSavorDbContext>(options =>
+        options.UseSqlServer(
+                builder.Configuration.GetConnectionString("DulceSavorDbConnection")
+            )
+        );
+
+var app = builder.Build();
+
 
 var app = builder.Build();
 
