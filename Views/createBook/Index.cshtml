@@ -19,11 +19,13 @@
 
         <div class="col-sm-2">
             <label>Precio</label>
-            <div class="col-9">
-                @Html.TextBox("nombre", "", new { @class = "form-control" })
-                </div>
+        </div>
+        <div class="col-9">
+             @Html.TextBox("nombre", "", new { @class = "form-control" })
+        </div>
+        <div class="col-sm-4">
 
-    </div>
+            @Html.DropDownList("id", ViewData["listaAutores"] as SelectList, "Seleccione un Autor", new {@class="form-control"})
 
         </div>
     </div>
