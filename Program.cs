@@ -1,3 +1,4 @@
+using L02P02_2019AC603_2021CO601.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,9 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 
-builder.Services.AddDbContext<DulceSavorDbContext>(options =>
+builder.Services.AddDbContext<libreriaDbContext>(options =>
         options.UseSqlServer(
-                builder.Configuration.GetConnectionString("DulceSavorDbConnection")
+                builder.Configuration.GetConnectionString("libreriaDbConnection")
             )
         );
 
