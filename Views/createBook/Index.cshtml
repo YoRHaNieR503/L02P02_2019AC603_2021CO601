@@ -3,74 +3,39 @@
     Creación de Libros
 </h1>
 <br />
-<form>
-   
 
+<form method="post" asp-action="GuardarLibro" asp-controller="createBook">
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-
-
-                <div class="form-grooup row mb-5">
+                <div class="form-group row mb-5">
                     <div class="col-sm-12">
                         <label>Nombre del libro</label>
-                    </div>
-                    <div class="col-sm-12">
-                        @Html.TextBox("nombre", "", new { @class = "form-control" })
+                        <input name="nombre" class="form-control" />
                     </div>
                     <div class="col-sm-2">
-                        @Html.Label("lblDescripcion", "Descripcion")
+                        <label>Descripción</label>
                     </div>
                     <div class="col-sm-12">
-                        @Html.TextArea("descripcion", "", new { @class = "form-control", @placeHolder = "Ingrese la descripcion" })
+                        <textarea name="descripcion" class="form-control" placeholder="Ingrese la descripción"></textarea>
                     </div>
-
-
-
                 </div>
-
-                <div class="form-grooup row mb-5">
-
-
+                <div class="form-group row mb-5">
                     <div class="col">
                         <label>Precio</label>
-
-                        <div class="col-sm-12">
-                            @Html.TextBox("precio", "", new { @class = "form-control" })
-                        </div>
-
+                        <input name="precio" class="form-control" />
                     </div>
-
-
-
                     <div class="col">
                         <label>Autor</label>
-                        <div class="col-sm-12">
-
-                            @Html.DropDownList("id", ViewData["listaAutores"] as SelectList, "Seleccione un Autor", new { @class = "form-control" })
-
-                        </div>
+                        @Html.DropDownList("autorId", ViewData["listaAutores"] as SelectList, "Seleccione un Autor", new { @class = "form-control" })
                     </div>
-
-
                     <div class="col">
-                        <label>Categoria o Genero</label>
-                        <div class="col-sm-12">
-
-                            @Html.DropDownList("id", ViewData["listaCategoria"] as SelectList, "Seleccione una categoria", new { @class = "form-control" })
-
-                        </div>
+                        <label>Categoría o Género</label>
+                        @Html.DropDownList("categoriaId", ViewData["listaCategoria"] as SelectList, "Seleccione una categoría", new { @class = "form-control" })
                     </div>
-
                 </div>
-
-
-
             </div>
-
             <div class="col-md-5">
-
-
                 <div class="container mt-5">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
@@ -81,28 +46,17 @@
                                         <input type="file" id="inputImage" class="form-control" accept="image/*" onchange="previewImage(event)">
                                     </div>
                                 </div>
-
                             </div>
-
                             <br />
-
-                            <a class="btn btn-success col-md-12">
-                                Guardar
-                            </a>
-
+                            <div class="col-sm-12">
+                                <input type="submit" class="btn btn-success" value="Guardar" />
+                            </div>
                         </div>
                     </div>
                 </div>
-
-
-
-
             </div>
         </div>
     </div>
-    
-
-
 </form>
 
 

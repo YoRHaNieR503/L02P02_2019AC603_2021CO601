@@ -1,15 +1,12 @@
 ﻿using L02P02_2019AC603_2021CO601.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace L02P02_2019AC603_2021CO601.Controllers
 {
     public class createBookController : Controller
     {
-
-
-
-
 
 
 
@@ -19,6 +16,7 @@ namespace L02P02_2019AC603_2021CO601.Controllers
         {
             _dbContext = libreriaDbContexto;
         }
+
 
         public IActionResult Index()
         {
@@ -38,14 +36,35 @@ namespace L02P02_2019AC603_2021CO601.Controllers
 /***********************************************************************************************************/
             var listaAutor = (from a in _dbContext.autores
                               select a).ToList();
-            ViewData["listaAutores"] = new SelectList(listaAutor, "id", "nombre");
+            ViewData["listaAutores"] = new SelectList(listaAutor, "id", "autor");
 /***********************************************************************************************************/
             var listaCategoria = (from c in _dbContext.categorias
                                   select c).ToList();
-            ViewData["listaCategoria"] = new SelectList(listaAutor, "id", "categoria");
+            ViewData["listaCategoria"] = new SelectList(listaCategoria, "id", "categoria");
 /***********************************************************************************************************/
 
             return View();
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> GuardarLibro(string nombre, string descripcion, decimal precio, int autorId, int categoriaId)
+        {
+            var nuevoLibro = new libros
+            {
+                nombre = nombre,
+                descripcion = descripcion,
+                precio = precio,
+                id_autor = autorId,
+                id_categoria = categoriaId 
+            };
+
+            _dbContext.libros.Add(nuevoLibro);
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+
     }
 }
