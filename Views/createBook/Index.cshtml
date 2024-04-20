@@ -23,6 +23,9 @@
         <div class="col-9">
              @Html.TextBox("nombre", "", new { @class = "form-control" })
         </div>
+        <div class="col-sm-2">
+            <label>Autor</label>
+        </div>
         <div class="col-sm-4">
 
             @Html.DropDownList("id", ViewData["listaAutores"] as SelectList, "Seleccione un Autor", new {@class="form-control"})
