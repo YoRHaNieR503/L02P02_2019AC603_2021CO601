@@ -101,7 +101,45 @@
         </div>
     </div>
     
+
+
 </form>
+
+
+<form>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre de libro</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Autor</th>
+                <th>Categoria</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var equipo in (IEnumerable<dynamic>) ViewData["ListadoLibros"])
+            {
+                <tr>
+                    <td>@equipo.NombreLibro</td>
+                    <td>@equipo.Descripcion</td>
+                    <td>@equipo.Precio</td>
+                    <td>@equipo.Autor</td>
+                    <td>@equipo.Categoria</td>
+                    <td><a class="btn btn-danger">Eliminar</a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+</form>
+
+
+
 <style>
 
 
