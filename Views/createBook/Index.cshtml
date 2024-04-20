@@ -31,5 +31,13 @@
             @Html.DropDownList("id", ViewData["listaAutores"] as SelectList, "Seleccione un Autor", new {@class="form-control"})
 
         </div>
+        <div class="col-sm-2">
+            <label>Categoria o Genero</label>
+        </div>
+        <div class="col-sm-4">
+
+            @Html.DropDownList("id", ViewData["listaCategoria"] as SelectList, "Seleccione una categoria", new { @class = "form-control" })
+
+        </div>
     </div>
 </form>
